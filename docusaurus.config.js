@@ -10,7 +10,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Randamu',
+  title: 'OnlySwaps',
   tagline: 'Developer documentation',
   favicon: 'img/favicon.ico',
 
@@ -66,9 +66,9 @@ const config = {
         respectPrefersColorScheme: true,
       },
       navbar: {
-        title: 'Randamu',
+        title: 'OnlySwaps',
         logo: {
-          alt: 'Randamu Logo',
+          alt: 'OnlySwaps Logo',
           src: 'img/logo.svg',
         },
         items: [
@@ -109,7 +109,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Randamu. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} OnlySwaps. Built with Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,
