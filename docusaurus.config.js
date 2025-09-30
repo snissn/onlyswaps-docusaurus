@@ -69,7 +69,7 @@ const config = {
         title: 'OnlySwaps',
         logo: {
           alt: 'OnlySwaps Logo',
-          src: 'img/logo.svg',
+          src: 'img/randamu_logo.svg',
         },
         items: [
           { type: 'doc', docId: 'index', position: 'left', label: 'Docs' },
