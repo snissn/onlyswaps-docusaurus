@@ -12,6 +12,10 @@ This runbook covers deploying contracts, publishing artifacts, and rolling out s
 2. Register **BLS validator** for `swap-v1`.
 3. Configure **destination chains** and **token mappings**.
 
+## Upgrades
+
+See the next section for scheduling and executing.
+
 ## Schedule an upgrade
 
 1. Derive bytes with `contractUpgradeParamsToBytes`.
