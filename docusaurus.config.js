@@ -57,6 +57,19 @@ const config = {
     ],
   ],
 
+  plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      /** @type {import('@docusaurus/plugin-content-docs').Options} */
+      ({
+        id: 'v2-alt',
+        path: 'docs/v2-alt/docs',
+        routeBasePath: 'v2-alt',
+        sidebarPath: './docs/v2-alt/sidebars.js',
+      }),
+    ],
+  ],
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -73,6 +86,13 @@ const config = {
         },
         items: [
           { type: 'doc', docId: 'index', position: 'left', label: 'Docs' },
+          {
+            type: 'docSidebar',
+            docsPluginId: 'v2-alt',
+            sidebarId: 'onlyswapsSidebar',
+            position: 'left',
+            label: 'OnlySwaps (v2-alt)',
+          },
           { to: '/getting-started', label: 'Getting Started', position: 'left' },
           {
             label: 'Reference',
