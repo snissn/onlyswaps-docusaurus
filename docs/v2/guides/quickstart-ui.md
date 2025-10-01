@@ -241,4 +241,4 @@ export default function Home() {
 npm run dev
 ```
 
-Open [http://localhost:3000](https://www.google.com/search?q=http://localhost:3000). Connect your wallet, switch to a supported testnet (e.g., Avalanche Fuji), mint RUSD, select a destination (e.g., Base Sepolia), and execute the swap.
+Open http://localhost:3000. Connect your wallet, switch to a supported testnet (e.g., Avalanche Fuji), mint RUSD, select a destination (e.g., Base Sepolia), and execute the swap.

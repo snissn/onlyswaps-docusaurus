@@ -86,6 +86,7 @@ const config = {
         },
         items: [
           { type: 'doc', docId: 'index', position: 'left', label: 'Docs' },
+          { to: '/v2', label: 'OnlySwaps (v2)', position: 'left' },
           {
             type: 'docSidebar',
             docsPluginId: 'v2-alt',

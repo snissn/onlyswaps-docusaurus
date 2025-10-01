@@ -49,4 +49,4 @@ npm install onlyswaps-js viem
 
 ## Next Steps
 
-[Client Reference](https://www.google.com/search?q=./clients.md) | [Type Reference](https://www.google.com/search?q=./types.md) | [suspicious link removed]
+[Client Reference](./clients.md) | [Type Reference](./types.md)

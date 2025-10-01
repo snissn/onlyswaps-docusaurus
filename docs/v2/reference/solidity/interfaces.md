@@ -62,7 +62,7 @@ function rebalanceSolver(address solver, bytes32 requestId, bytes calldata sigBy
 
 Defines the interface for scheduling, canceling, and executing UUPS upgrades with BLS authorization.
 
-[See the ScheduledUpgradeable Reference](https://www.google.com/search?q=./scheduled-upgradeable.md) for details.
+[See the ScheduledUpgradeable Reference](./scheduled-upgradeable.md) for details.
 
 ```solidity
 interface IScheduledUpgradeable {

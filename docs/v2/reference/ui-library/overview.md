@@ -38,4 +38,4 @@ npm install onlyswaps-ui onlyswaps-js viem wagmi @rainbow-me/rainbowkit zod @hoo
 
 ## Next Steps
 
-[Hook Reference](https://www.google.com/search?q=./hooks.md) | [Configuration Reference](https://www.google.com/search?q=./configuration.md) | [Schema Reference](https://www.google.com/search?q=./schemas.md)
+[Hook Reference](./hooks.md) | [Configuration Reference](./configuration.md) | [Schema Reference](./schemas.md)

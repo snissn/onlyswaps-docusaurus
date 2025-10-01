@@ -40,7 +40,7 @@ ISignatureScheme public swapRequestBlsValidator;
 
 ## Core Swap Functions
 
-*(These functions implement the logic defined in the [IRouter interface](https://www.google.com/search?q=./interfaces.md).)*
+*(These functions implement the logic defined in the [IRouter interface](./interfaces.md).)*
 
 ### relayTokens
 
