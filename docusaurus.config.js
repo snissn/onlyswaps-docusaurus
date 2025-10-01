@@ -78,21 +78,33 @@ const config = {
         },
         items: [
           { type: 'doc', docId: 'index', position: 'left', label: 'Docs' },
-          { to: '/v2', label: 'OnlySwaps (v2)', position: 'left' },
-          
-          { to: '/getting-started', label: 'Getting Started', position: 'left' },
+          {
+            label: 'Guides',
+            position: 'left',
+            items: [
+              { to: '/guides/quickstart-ui', label: 'Quickstart UI' },
+              { to: '/guides/programmatic-swaps', label: 'Programmatic Swaps' },
+              { to: '/guides/contract-upgrades', label: 'Contract Upgrades' },
+            ],
+          },
+          {
+            label: 'Concepts',
+            position: 'left',
+            items: [
+              { to: '/concepts/overview', label: 'Overview' },
+              { to: '/concepts/architecture', label: 'Architecture' },
+              { to: '/concepts/terminology', label: 'Terminology' },
+            ],
+          },
           {
             label: 'Reference',
             position: 'left',
             items: [
-              { to: '/reference/solidity', label: 'Solidity' },
-              { to: '/reference/rust-solver', label: 'Rust Solver' },
-              { to: '/reference/js', label: 'JS SDK' },
+              { to: '/reference/solidity/router', label: 'Solidity' },
+              { to: '/reference/js-sdk/overview', label: 'JS SDK' },
+              { to: '/reference/ui-library/overview', label: 'UI Library' },
             ],
           },
-          { to: '/operations', label: 'Operations', position: 'left' },
-          { to: '/recipes', label: 'Recipes', position: 'left' },
-          { to: '/glossary', label: 'Glossary', position: 'left' },
           { href: 'https://github.com/fil-builders', label: 'GitHub', position: 'right' },
         ],
       },
@@ -102,11 +114,11 @@ const config = {
           {
             title: 'Docs',
             items: [
-              { label: 'Getting Started', to: '/getting-started' },
-              { label: 'Core Concepts', to: '/core-concepts' },
-              { label: 'Reference', to: '/reference' },
-              { label: 'Operations', to: '/operations' },
-              { label: 'Glossary', to: '/glossary' },
+              { label: 'Quickstart', to: '/guides/quickstart-ui' },
+              { label: 'Concepts', to: '/concepts/overview' },
+              { label: 'JS SDK', to: '/reference/js-sdk/overview' },
+              { label: 'Solidity', to: '/reference/solidity/router' },
+              { label: 'UI Library', to: '/reference/ui-library/overview' },
             ],
           },
           {
