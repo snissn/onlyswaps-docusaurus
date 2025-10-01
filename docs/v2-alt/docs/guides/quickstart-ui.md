@@ -4,17 +4,17 @@ This tutorial gets you from zero to a working cross‑chain swap UI using `onlys
 
 ## 1) Create the project
 
-```bash
+~~~bash
 npx create-next-app@latest onlyswaps-ui --ts --eslint
 cd onlyswaps-ui
 npm i onlyswaps-ui onlyswaps-js wagmi viem @rainbow-me/rainbowkit zod
-```
+~~~
 
 ## 2) Configure Wagmi & RainbowKit
 
 Use OnlySwaps’ exported chain helpers to avoid address drift across chains.
 
-```tsx
+~~~tsx
 // app/providers.tsx
 "use client";
 import { WagmiProvider, createConfig, http } from "wagmi";
@@ -35,13 +35,13 @@ export function AppProviders({ children }: { children: React.ReactNode }) {
     </WagmiProvider>
   );
 }
-```
+~~~
 
 `supportedChains` and `supportedTransports` are derived from `chainConfigs` in the UI package; use them to seed Wagmi/RainbowKit.  
 
 ## 3) Add the swap button
 
-```tsx
+~~~tsx
 // app/swap/SwapButton.tsx
 "use client";
 import * as React from "react";
@@ -74,13 +74,13 @@ export default function SwapButton() {
 
   return <button onClick={onClick}>Swap 1 RUSD</button>;
 }
-```
+~~~
 
 `useOnlySwapsClient` returns a viem‑backed client bound to the current chain; values may be undefined until Wagmi is ready—guard your calls. 
 
 ## 4) Validate form input with zod
 
-```ts
+~~~ts
 // app/swap/validation.ts
 import { z } from "zod";
 import { amountSchema, chainIdSchema, currencySchema } from "onlyswaps-ui";
@@ -94,7 +94,7 @@ export const SwapFormSchema = z.object({
   (v) => v.srcChainId !== v.dstChainId,
   { message: "Source and destination must differ", path: ["dstChainId"] }
 );
-```
+~~~
 
 `amountSchema`, `chainIdSchema`, and `currencySchema` keep user inputs safe and consistent with supported chains/currencies. Use the package’s `SwapFormSchema` if available in your version. 
 
@@ -107,4 +107,3 @@ Poll the source chain for `executed` and the destination chain for `fulfilled` t
 > * Hook returns `{}` → Wait for Wagmi connection; render guards.
 > * Fee/amount off by 10^x → Convert to/from 18‑dp `bigint` via helpers (`rusdFromNumber`, `rusdToString`).
 > * Same chain picked twice → enforce with `SwapFormSchema` refinement. 
-

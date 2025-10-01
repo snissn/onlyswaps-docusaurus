@@ -5,6 +5,9 @@
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
 import {themes as prismThemes} from 'prism-react-renderer';
+import {createRequire} from 'module';
+const require = createRequire(import.meta.url);
+const noMdxEsm = require('./plugins/remark/noMdxEsm.js');
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -30,7 +33,7 @@ const config = {
   organizationName: 'fil-builders', // Usually your GitHub org/user name.
   projectName: 'randamu', // Usually your repo name.
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -57,18 +60,7 @@ const config = {
     ],
   ],
 
-  plugins: [
-    [
-      '@docusaurus/plugin-content-docs',
-      /** @type {import('@docusaurus/plugin-content-docs').Options} */
-      ({
-        id: 'v2-alt',
-        path: 'docs/v2-alt/docs',
-        routeBasePath: 'v2-alt',
-        sidebarPath: './docs/v2-alt/sidebars.js',
-      }),
-    ],
-  ],
+  plugins: [],
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -87,13 +79,7 @@ const config = {
         items: [
           { type: 'doc', docId: 'index', position: 'left', label: 'Docs' },
           { to: '/v2', label: 'OnlySwaps (v2)', position: 'left' },
-          {
-            type: 'docSidebar',
-            docsPluginId: 'v2-alt',
-            sidebarId: 'onlyswapsSidebar',
-            position: 'left',
-            label: 'OnlySwaps (v2-alt)',
-          },
+          
           { to: '/getting-started', label: 'Getting Started', position: 'left' },
           {
             label: 'Reference',

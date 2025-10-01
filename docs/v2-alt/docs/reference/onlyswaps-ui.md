@@ -2,10 +2,11 @@
 
 Typed React hooks, chain configuration, and zod schemas for building a production swap UI.
 
-> **Install**
-> ```bash
-> npm i onlyswaps-ui
-> ```
+Install
+
+~~~bash
+npm i onlyswaps-ui
+~~~
 
 ---
 
@@ -15,20 +16,20 @@ Typed React hooks, chain configuration, and zod schemas for building a productio
 
 **Purpose**: Returns an OnlySwaps client and WalletClient bound to the current (or provided) chain.  
 **Signature**:  
-```ts
+~~~ts
 export type UseOnlySwapsProps = { chainId?: number };
 export type UseOnlySwapsReturn = {
   walletClient?: WalletClient;
   onlyswaps?: OnlySwaps;
 };
 export function useOnlySwapsClient(props?: UseOnlySwapsProps): UseOnlySwapsReturn;
-```
+~~~
 
 Call inside a React component wrapped by Wagmi/RainbowKit providers. Returns `{ onlyswaps, walletClient }` once ready; otherwise fields may be `undefined`. Pass an explicit `chainId` to target a specific network. 
 
 **Example**
 
-```tsx
+~~~tsx
 import { useAccount } from "wagmi";
 import { rusdFromNumber } from "onlyswaps-js";
 import { useOnlySwapsClient } from "onlyswaps-ui";
@@ -53,7 +54,7 @@ export function SwapButton() {
   };
   return <button onClick={onClick}>Swap</button>;
 }
-```
+~~~
 
 
 
@@ -64,17 +65,17 @@ export function SwapButton() {
 **Purpose**: Returns an RUSD client bound to a chain for a wallet address.
 **Signature**:
 
-```ts
+~~~ts
 type UseRusdProps = { chainId: number; address?: `0x${string}` };
 type UseRusdReturn = { rusd?: RUSD };
 export function useRusd(props: UseRusdProps): UseRusdReturn;
-```
+~~~
 
 Provide `chainId` and `address`; returns `{}` until clients are ready. Resolve token address via `chainConfigs[chainId].rusd`. Use `onlyswaps-js` helpers for 18‑dp conversions. 
 
 **Example**
 
-```tsx
+~~~tsx
 import { useRusd } from "onlyswaps-ui";
 import { useAccount } from "wagmi";
 export function RusdBalance() {
@@ -82,7 +83,7 @@ export function RusdBalance() {
   const { rusd } = useRusd({ chainId: chainId!, address: address as `0x${string}` });
   // ...
 }
-```
+~~~
 
 
 
@@ -120,4 +121,3 @@ Record mapping each supported chain ID to a default HTTP transport; pass to `wag
 * “Which chains are supported?” → The set in `chainConfigs` and surfaced via `supportedChains`.
 * “Why does my hook return `{}`?” → Clients not ready; guard renders until defined.
 * “Amounts look wrong on‑chain.” → Convert UI numbers to 18‑dp `bigint` with `rusdFromNumber`. 
-

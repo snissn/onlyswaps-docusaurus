@@ -1,11 +1,12 @@
 # `onlyswaps-js` Reference
 
-A lightweight TypeScript client built on viem for swaps, fee management, and request tracking. All token values use **18‑decimal `bigint`**. :contentReference[oaicite:79]{index=79}
+A lightweight TypeScript client built on viem for swaps, fee management, and request tracking. All token values use **18‑decimal `bigint`**.
 
-> **Install**
-> ```bash
-> npm i onlyswaps-js
-> ```
+Install
+
+~~~bash
+npm i onlyswaps-js
+~~~
 
 ---
 
@@ -13,10 +14,10 @@ A lightweight TypeScript client built on viem for swaps, fee management, and req
 
 ### `OnlySwapsViemClient`
 
-**Summary**: Request swaps through the Router, fetch/update fees, and query status/receipts. :contentReference[oaicite:80]{index=80}
+**Summary**: Request swaps through the Router, fetch/update fees, and query status/receipts.
 
 **Constructor**
-```ts
+~~~ts
 new OnlySwapsViemClient(
   account: `0x${string}`,
   contractAddress: Address,
@@ -24,17 +25,17 @@ new OnlySwapsViemClient(
   walletClient: WalletClient,
   abi?: Abi
 )
-```
+~~~
 
 **Methods**
 
-```ts
+~~~ts
 fetchRecommendedFee(tokenAddress: `0x${string}`, amount: bigint, srcChainId: bigint, dstChainId: bigint): Promise<bigint>;
 swap(request: SwapRequest, client?: RUSD): Promise<SwapResponse>;
 updateFee(requestId: `0x${string}`, newFee: bigint): Promise<void>;
 fetchStatus(requestId: `0x${string}`): Promise<SwapRequestParameters>;
 fetchReceipt(requestId: `0x${string}`): Promise<SwapRequestReceipt>;
-```
+~~~
 
 Use a matching `PublicClient` and `WalletClient` for the same chain; `swap` can auto‑approve `amount + fee` when given an RUSD client. `requestId` is parsed from `SwapRequested` logs. 
 
@@ -46,17 +47,17 @@ Use a matching `PublicClient` and `WalletClient` for the same chain; `swap` can 
 
 **Constructor**
 
-```ts
+~~~ts
 new RUSDViemClient(account: Address, contractAddr: Address, publicClient: PublicClient, walletClient: WalletClient, abi?: Abi)
-```
+~~~
 
 **Methods**
 
-```ts
+~~~ts
 mint(): Promise<void>;
 balanceOf(address: Address): Promise<bigint>;
 approveSpend(address: Address, amount: bigint): Promise<void>;
-```
+~~~
 
 Minting requires a signer and is supported on specific networks (e.g., local Anvil). Approvals typically cover `amount + fee`. 
 
@@ -64,7 +65,7 @@ Minting requires a signer and is supported on specific networks (e.g., local Anv
 
 ## Interfaces
 
-```ts
+~~~ts
 export interface OnlySwaps {
   swap(options: SwapRequest): Promise<SwapResponse>;
   updateFee(requestId: `0x${string}`, newFee: bigint): Promise<void>;
@@ -78,7 +79,7 @@ export interface RUSD {
   balanceOf(address: Address): Promise<bigint>;
   approveSpend(address: Address, amount: bigint): Promise<void>;
 }
-```
+~~~
 
 
 
@@ -88,7 +89,7 @@ export interface RUSD {
 
 ### `SwapRequest`
 
-```ts
+~~~ts
 export type SwapRequest = {
   recipient: `0x${string}`;
   tokenAddress: `0x${string}`;
@@ -96,15 +97,15 @@ export type SwapRequest = {
   fee: bigint;              // 18‑dp units
   destinationChainId: bigint;
 };
-```
+~~~
 
 Convert UI input using `rusdFromString`/`rusdFromNumber`; never pass `number`. 
 
 ### `SwapResponse`
 
-```ts
+~~~ts
 export type SwapResponse = { requestId: `0x${string}` };
-```
+~~~
 
 Persist `requestId`—it’s used to query and update swaps. 
 
@@ -120,19 +121,19 @@ Includes `fulfilled`, solver/recipient, `amountOut`, and time. Use `rusdToString
 
 ## RUSD Formatting Helpers (18‑dp)
 
-```ts
+~~~ts
 rusdToString(value: bigint, decimals = 2): string;     // truncates, does not round
 rusdFromString(input: string): bigint;                 // truncates extra fractional digits beyond 18
 rusdFromNumber(input: number): bigint;                 // rounds to nearest wei-style unit
-```
+~~~
 
 Examples:
 
-```ts
+~~~ts
 rusdToString(1111000000000000000n, 3) // "1.111"
 rusdFromString("1.123456789012345678") // 1123456789012345678n
 rusdFromNumber(1.1) // 1100000000000000000n
-```
+~~~
 
  
 
@@ -150,4 +151,3 @@ rusdFromNumber(1.1) // 1100000000000000000n
 * Missing `requestId` → ensure ABI/event match.
 * Mixed `number`/`bigint` → always convert to/from 18‑dp helpers.
 * Fee bump ignored → already fulfilled/executed. 
-

@@ -2,7 +2,7 @@
 
 The swap lifecycle involves fee discovery, request creation, solver fulfillment, and committee verification:
 
-```mermaid
+~~~mermaid
 sequenceDiagram
   participant User
   participant ONLYportal
@@ -38,7 +38,7 @@ sequenceDiagram
   Router->>Scheme: Verify signature with committee pubkey
   Router->>Solver: Reimburse locked funds + fee
   Router->>Router: Mark SwapRequest complete
-```
+~~~
 
 **How it fits together**
 
@@ -52,4 +52,3 @@ sequenceDiagram
 > * Current scope: like‑for‑like tokens. 
 > * Single committee (for now), but designed for multiple committees later. 
 > * Signature upload is currently by a single party; future releases incentivize others to post it for a bounty. 
-

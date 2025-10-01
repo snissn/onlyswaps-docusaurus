@@ -4,7 +4,7 @@ This guide shows how to mint test tokens, approve spend, and initiate a swap usi
 
 ## 1) Setup viem clients
 
-```ts
+~~~ts
 import { createPublicClient, createWalletClient, http } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
 import { foundry } from "viem/chains";
@@ -12,11 +12,11 @@ import { foundry } from "viem/chains";
 const account = privateKeyToAccount(process.env.PRIVATE_KEY!);
 export const publicClient = createPublicClient({ chain: foundry, transport: http("http://localhost:31337") });
 export const walletClient = createWalletClient({ chain: foundry, transport: http("http://localhost:31337"), account });
-```
+~~~
 
 ## 2) Mint RUSD (test) & approve Router
 
-```ts
+~~~ts
 import { RUSDViemClient } from "onlyswaps-js";
 
 const me = account.address as `0x${string}`;
@@ -27,13 +27,13 @@ const rusd = new RUSDViemClient(me, RUSD_ADDR, publicClient, walletClient);
 await rusd.mint(); // faucet-like; available on supported test deployments
 const bal = await rusd.balanceOf(me);
 await rusd.approveSpend(ROUTER_ADDR, bal);
-```
+~~~
 
 `RUSDViemClient` exposes `mint`, `balanceOf`, `approveSpend` over an 18‑dp test token. 
 
 ## 3) Request a swap & manage fees
 
-```ts
+~~~ts
 import { OnlySwapsViemClient, rusdFromNumber, type SwapRequest } from "onlyswaps-js";
 
 const only = new OnlySwapsViemClient(me, ROUTER_ADDR, publicClient, walletClient);
@@ -57,7 +57,7 @@ if (!before.executed) {
 }
 const receipt = await only.fetchReceipt(requestId);
 console.log({ requestId, executed: before.executed, fulfilled: receipt.fulfilled });
-```
+~~~
 
 The OnlySwaps client parses `SwapRequested` logs to obtain `requestId`, differentiates source‑chain `status` vs destination‑chain `receipt`, and provides helpers to fetch/update fees. Keep values in 18‑dp `bigint`.   
 
@@ -65,4 +65,3 @@ The OnlySwaps client parses `SwapRequested` logs to obtain `requestId`, differen
 >
 > * Missing allowance → ensure `approveSpend(router, amount + fee)` or pass your RUSD client to `swap`.
 > * Fee seems ignored → the request is likely already `executed`/`fulfilled`. Check both chains before bumping. 
-

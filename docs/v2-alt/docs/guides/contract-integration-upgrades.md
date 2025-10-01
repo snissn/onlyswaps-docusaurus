@@ -5,10 +5,10 @@ This page is for Solidity developers and protocol administrators.
 ## Router: Admin surfaces you’ll use
 
 - **Chain & token mapping**: permit destination chain IDs, then map token pairs `(dstChainId, dstToken, srcToken)` before allowing swaps.  
-  ```solidity
+  ~~~solidity
   function permitDestinationChainId(uint256 chainId) external;
   function setTokenMapping(uint256 dstChainId, address dstToken, address srcToken) external;
-  ```
+~~~
 
 Reverts on unsupported chain or duplicate mapping. 
 
@@ -22,7 +22,7 @@ OnlySwaps contracts are upgradeable via **UUPS** with **BLS (BN254)‑gated** au
 
 ### ScheduledUpgradeable API (excerpt)
 
-```solidity
+~~~solidity
 function scheduleUpgrade(address newImplementation, bytes calldata upgradeCalldata, uint256 upgradeTime, bytes calldata signature) external;
 function cancelUpgrade(bytes calldata signature) external;
 function executeUpgrade() external;
@@ -37,13 +37,13 @@ function contractUpgradeParamsToBytes(
   uint256 nonce
 ) external view returns (bytes memory message, bytes memory messageAsG1Bytes);
 function blsValidatorUpdateParamsToBytes(address blsValidator, uint256 nonce) external view returns (bytes memory, bytes memory);
-```
+~~~
 
 Use these helpers to compute the exact bytes to sign; signatures use the BN254 scheme and include nonces and chain IDs to prevent replay. Enforce `upgradeTime ≥ now + minimumContractUpgradeDelay` (default ≥ 2 days). 
 
 ### End‑to‑end: Schedule → Execute an upgrade
 
-```ts
+~~~ts
 import { ethers } from "ethers";
 
 const abi = [
@@ -70,7 +70,7 @@ const [message, g1] = await proxy.contractUpgradeParamsToBytes(action, pendingIm
 // 2) Sign `g1` off‑chain with your BN254 BLS key (committee side), obtain `signature`
 // 3) Call scheduleUpgrade(newImpl, calldata, T, signature)
 // 4) After T, call executeUpgrade(); verify new implementation address / Router.getVersion()
-```
+~~~
 
 This flow is enforced by `ScheduledUpgradeable`; attempts to bypass delay or reuse version will revert (`UpgradeTimeMustRespectDelay`, `SameVersionUpgradeNotAllowed`).  
 
@@ -87,4 +87,3 @@ Solvers derive message bytes via `swapRequestParametersToBytes(requestId, solver
 > * **Default min. upgrade delay?** Two days; adjust via `setMinimumContractUpgradeDelay`.
 > * **Where do I get bytes to sign?** `contractUpgradeParamsToBytes` / `blsValidatorUpdateParamsToBytes`.
 > * **How to map tokens?** `permitDestinationChainId(dst)` then `setTokenMapping(dst, dstToken, srcToken)`. 
-

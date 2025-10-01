@@ -1,12 +1,12 @@
 # `onlyswaps/solidity` Reference
 
-Upgradeable Router + BLS‑gated admin flows and helper libraries. Keep Router behind a **UUPS proxy** and authorize sensitive actions via **BN254 BLS** signatures. :contentReference[oaicite:95]{index=95}
+Upgradeable Router + BLS‑gated admin flows and helper libraries. Keep Router behind a **UUPS proxy** and authorize sensitive actions via **BN254 BLS** signatures.
 
 ---
 
 ## Router (public/external API, distilled)
 
-```solidity
+~~~solidity
 contract Router /* ... */ {
   // Roles & constants
   bytes32 public constant ADMIN_ROLE = keccak256("ADMIN_ROLE");
@@ -45,18 +45,18 @@ contract Router /* ... */ {
   // Versioning
   function getVersion() public pure returns (string memory);
 }
-```
+~~~
 
 Initialize behind a UUPS proxy; whitelist chains and map token pairs before enabling swaps. Keep `verificationFeeBps` under `MAX_FEE_BPS`. 
 
 **Selected events & swap settlement helpers**
 
-```solidity
+~~~solidity
 event SwapRequested(bytes32 indexed requestId, uint256 indexed srcChainId, uint256 indexed dstChainId);
 function swapRequestParametersToBytes(bytes32 requestId, address solver) external view returns (bytes memory, bytes memory);
 function relayTokens(address token, address recipient, uint256 amount, bytes32 requestId, uint256 srcChainId) external;
 function rebalanceSolver(address solver, bytes32 requestId, bytes calldata sigBytes) external;
-```
+~~~
 
 Solvers derive message bytes via `swapRequestParametersToBytes` (sign off‑chain BN254), then call `rebalanceSolver` on the source chain to settle. 
 
@@ -68,14 +68,14 @@ Abstract base for time‑locked upgrades with validator update flows and replay�
 
 **Key functions (excerpt)**
 
-```solidity
+~~~solidity
 function scheduleUpgrade(address newImplementation, bytes calldata upgradeCalldata, uint256 upgradeTime, bytes calldata signature) external;
 function cancelUpgrade(bytes calldata signature) external;
 function executeUpgrade() external;
 
 function contractUpgradeParamsToBytes(string action, address pendingImplementation, address newImplementation, bytes upgradeCalldata, uint256 upgradeTime, uint256 nonce) external view returns (bytes, bytes);
 function blsValidatorUpdateParamsToBytes(address blsValidator, uint256 nonce) external view returns (bytes, bytes);
-```
+~~~
 
 Respect `minimumContractUpgradeDelay` (default ≥ 2 days). Use `currentNonce()+1` when preparing an upgrade message. 
 
@@ -140,7 +140,7 @@ SameVersionUpgradeNotAllowed
 
 Read version; permit a chain; set a token mapping:
 
-```js
+~~~js
 import { ethers } from "ethers";
 const rpc = process.env.RPC_URL;
 const routerAddr = process.env.ROUTER_PROXY;
@@ -161,7 +161,5 @@ const router = new ethers.Contract(routerAddr!, abi, signer);
 console.log("Router version:", await router.getVersion());
 await (await router.permitDestinationChainId(dstChainId)).wait();
 await (await router.setTokenMapping(dstChainId, dstToken, srcToken)).wait();
-```
-
-
+~~~
 
