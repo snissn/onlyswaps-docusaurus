@@ -48,10 +48,8 @@ const config = {
       'classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
-        docs: {
-          sidebarPath: './sidebars.js',
-          routeBasePath: '/',
-        },
+        // Disable default single-docs instance; we'll run two docs plugins (v1, v2)
+        docs: false,
         blog: false,
         theme: {
           customCss: './src/css/custom.css',
@@ -60,7 +58,26 @@ const config = {
     ],
   ],
 
-  plugins: [],
+  plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'v1',
+        path: 'docs/v1/docs',
+        routeBasePath: 'v1',
+        sidebarPath: require.resolve('./sidebars.v1.js'),
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'v2',
+        path: 'docs/v2',
+        routeBasePath: 'v2',
+        sidebarPath: require.resolve('./sidebars.v2.js'),
+      },
+    ],
+  ],
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -77,32 +94,48 @@ const config = {
           src: 'img/randamu_logo.svg',
         },
         items: [
-          { type: 'doc', docId: 'index', position: 'left', label: 'Docs' },
+          {
+            label: 'Docs',
+            position: 'left',
+            items: [
+              { to: '/v1', label: 'Version 1' },
+              { to: '/v2', label: 'Version 2' },
+            ],
+          },
           {
             label: 'Guides',
             position: 'left',
             items: [
-              { to: '/guides/quickstart-ui', label: 'Quickstart UI' },
-              { to: '/guides/programmatic-swaps', label: 'Programmatic Swaps' },
-              { to: '/guides/contract-upgrades', label: 'Contract Upgrades' },
+              { to: '/v2/getting-started/for-end-users', label: 'For End Users (v2)' },
+              { to: '/v2/getting-started/for-developers/frontend-quickstart', label: 'Frontend Quickstart (v2)' },
+              { to: '/v2/getting-started/for-developers/backend-integration', label: 'Programmatic Swaps (v2)' },
+              { to: '/v1/getting-started/for-end-users', label: 'For End Users (v1)' },
+              { to: '/v1/getting-started/for-developers/frontend-quickstart', label: 'Frontend Quickstart (v1)' },
+              { to: '/v1/getting-started/for-developers/backend-integration', label: 'Programmatic Swaps (v1)' },
             ],
           },
           {
             label: 'Concepts',
             position: 'left',
             items: [
-              { to: '/concepts/overview', label: 'Overview' },
-              { to: '/concepts/architecture', label: 'Architecture' },
-              { to: '/concepts/terminology', label: 'Terminology' },
+              { to: '/v2/introduction/overview', label: 'Overview (v2)' },
+              { to: '/v2/introduction/architecture', label: 'Architecture (v2)' },
+              { to: '/v1/introduction/overview', label: 'Overview (v1)' },
+              { to: '/v1/introduction/architecture', label: 'Architecture (v1)' },
             ],
           },
           {
             label: 'Reference',
             position: 'left',
             items: [
-              { to: '/reference/solidity/router', label: 'Solidity' },
-              { to: '/reference/js-sdk/overview', label: 'JS SDK' },
-              { to: '/reference/ui-library/overview', label: 'UI Library' },
+              { to: '/v2/reference/api', label: 'API / SDK (v2)' },
+              { to: '/v2/reference/fees', label: 'Fees (v2)' },
+              { to: '/v2/reference/chains-and-tokens', label: 'Chains & Tokens (v2)' },
+              { to: '/v2/reference/faq', label: 'FAQ (v2)' },
+              { to: '/v1/reference/api', label: 'API / SDK (v1)' },
+              { to: '/v1/reference/fees', label: 'Fees (v1)' },
+              { to: '/v1/reference/chains-and-tokens', label: 'Chains & Tokens (v1)' },
+              { to: '/v1/reference/faq', label: 'FAQ (v1)' },
             ],
           },
           { href: 'https://github.com/fil-builders', label: 'GitHub', position: 'right' },
@@ -114,11 +147,8 @@ const config = {
           {
             title: 'Docs',
             items: [
-              { label: 'Quickstart', to: '/guides/quickstart-ui' },
-              { label: 'Concepts', to: '/concepts/overview' },
-              { label: 'JS SDK', to: '/reference/js-sdk/overview' },
-              { label: 'Solidity', to: '/reference/solidity/router' },
-              { label: 'UI Library', to: '/reference/ui-library/overview' },
+              { label: 'Docs v2', to: '/v2' },
+              { label: 'Docs v1', to: '/v1' },
             ],
           },
           {
