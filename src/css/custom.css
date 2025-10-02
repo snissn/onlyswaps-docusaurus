@@ -159,3 +159,127 @@
   color: var(--ifm-color-primary-dark);
   text-decoration: underline;
 }
+
+/* Flow diagram styles */
+.flow-diagram {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.flow-container {
+  display: inline-block;
+  border: 2px solid #e1e5e9;
+  border-radius: 8px;
+  padding: 2rem;
+  background: #f8f9fa;
+  max-width: 100%;
+}
+
+.flow-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+.flow-step {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 6px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.step-number {
+  background: #2196f3;
+  color: white;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.step-content {
+  flex: 1;
+}
+
+.step-content strong {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.step-content small {
+  color: #666;
+  font-size: 0.875rem;
+}
+
+.flow-arrow {
+  font-size: 24px;
+  color: #666;
+  margin: 0.5rem 0;
+}
+
+/* Step-specific colors */
+.step-1 {
+  background: #e3f2fd;
+}
+
+.step-1 .step-number {
+  background: #2196f3;
+}
+
+.step-2 {
+  background: #f3e5f5;
+}
+
+.step-2 .step-number {
+  background: #9c27b0;
+}
+
+.step-3 {
+  background: #e8f5e8;
+}
+
+.step-3 .step-number {
+  background: #4caf50;
+}
+
+.step-4 {
+  background: #fff3e0;
+}
+
+.step-4 .step-number {
+  background: #ff9800;
+}
+
+.step-5 {
+  background: #e0f2f1;
+}
+
+.step-5 .step-number {
+  background: #009688;
+}
+
+/* Dark mode support */
+[data-theme='dark'] .flow-container {
+  background: #2a2a2a;
+  border-color: #444;
+}
+
+[data-theme='dark'] .flow-step {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme='dark'] .step-content small {
+  color: #aaa;
+}
+
+[data-theme='dark'] .flow-arrow {
+  color: #aaa;
+}

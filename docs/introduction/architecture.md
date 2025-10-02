@@ -37,9 +37,9 @@ The `Scheme` contract contains the cryptographic logic and the committee's publi
 
 This scheme implements BLS signature verification over the BN254 curve. Crucially, it enforces **domain separation**. This ensures that a signature intended for one purpose (e.g., `"swap-v1"`) cannot be replayed for another (e.g., `"upgrade-v1"`). Separate instances of the scheme are deployed for swap verifications and contract upgrades.
 
-## Visualizing the Cross-Chain Flow
+## Cross-Chain Flow
 
-The following sequence diagram illustrates the end-to-end flow of a cross-chain swap.
+The following sequence diagram illustrates the end-to-end flow of a cross-chain swap:
 
 ```mermaid
 sequenceDiagram
@@ -47,44 +47,50 @@ sequenceDiagram
     participant ONLYportal
     participant ONLYSwaps-js
     participant FeesAPI
-    participant Router(Source Chain)
-    participant Scheme(Source Chain)
+    participant Router as Router (Source Chain)
+    participant Scheme as Scheme (Source Chain)
     participant Solver
-    participant Verifier(dcipher committee)
-    participant DestinationChain
+    participant Verifier as dcipher Committee
+    participant DestChain as Destination Chain
 
-    %% Step 0: Fee discovery
+    Note over User, DestChain: Step 1: Fee Discovery (Optional)
     User->>ONLYportal: Connect wallet & enter params
     ONLYportal->>FeesAPI: Request suggested fee
     FeesAPI-->>ONLYportal: Suggested fee
     ONLYportal->>ONLYSwaps-js: Forward fee & params
     ONLYSwaps-js-->>User: Display suggested fee
 
-    %% Step 1: Create Swap Request
+    Note over User, DestChain: Step 2: Swap Request Creation
     User->>ONLYSwaps-js: Submit swap (amount, dstChain, minFee)
-    ONLYSwaps-js->>Router(Source Chain): Lock tokens & create SwapRequest
-    Router(Source Chain)-->>Solver: Emit SwapRequest event
-    Router(Source Chain)-->>Verifier(dcipher committee): Emit SwapRequest event
+    ONLYSwaps-js->>Router: Lock tokens & create SwapRequest
+    Router-->>Solver: Emit SwapRequest event
+    Router-->>Verifier: Emit SwapRequest event
 
-    %% Step 2: Solver Fulfilment
-    Solver->>Router(Source Chain): Post fulfilment intent
-    Solver->>DestinationChain: Send tokens to user's address
-    DestinationChain-->>Verifier(dcipher committee): Transfer/log visible
+    Note over User, DestChain: Step 3: Solver Fulfillment
+    Solver->>Router: Post fulfillment intent
+    Solver->>DestChain: Send tokens to user's address
+    DestChain-->>Verifier: Transfer/log visible
 
-    %% Step 3: Committee Verification
-    Verifier(dcipher committee)->>Verifier(dcipher committee): Threshold-sign Swap Verification off-chain
-    Verifier(dcipher committee)->>Router(Source Chain): Submit aggregated signature
-    Router(Source Chain)->>Scheme(Source Chain): Verify signature with committee pubkey
-    Router(Source Chain)->>Solver: Reimburse locked funds + fee
-    Router(Source Chain)->>Router(Source Chain): Mark SwapRequest complete
+    Note over User, DestChain: Step 4: Committee Verification
+    Verifier->>Verifier: Threshold-sign Swap Verification off-chain
+    Verifier->>Router: Submit aggregated signature
+    Router->>Scheme: Verify signature with committee pubkey
+
+    Note over User, DestChain: Step 5: Reimbursement & Completion
+    Router->>Solver: Reimburse locked funds + fee
+    Router->>Router: Mark SwapRequest complete
 ```
 
-### Flow Explanation
+### Flow Steps
 
-1.  **Fee Discovery (Optional):** The user interface queries the centralized Fees API to get a recommended fee based on current network conditions and liquidity.
-2.  **Swap Request Initiation:** The user submits the swap transaction to the Router contract on the Source Chain. The tokens (amount + fee) are locked, and a `SwapRequested` event is emitted with a unique `requestId`.
-3.  **Solver Fulfillment:** A Solver observes the event and fulfills the request by sending the tokens to the user on the Destination Chain.
-4.  **Verification:** The dcipher committee (Verifiers) observes the successful transfer on the Destination Chain.
-5.  **Threshold Signing:** The committee members collaborate off-chain to generate a BLS threshold signature verifying the fulfillment.
-6.  **Reimbursement:** The aggregated signature is submitted to the Router on the Source Chain. The Router verifies the signature via the Scheme contract. If valid, the Router releases the locked funds and the fee to the Solver and marks the `SwapRequest` as complete (`executed`).
+1. **Fee Discovery (Optional):** User connects wallet and enters swap parameters via ONLYportal, which queries the Fees API for suggested fees based on current conditions.
+
+2. **Swap Request Creation:** User submits swap transaction through ONLYSwaps-js SDK. Router contract locks user's tokens and emits `SwapRequested` event.
+
+3. **Solver Fulfillment:** Solver monitors Router contract, posts fulfillment intent, and sends tokens to user's address on destination chain.
+
+4. **Committee Verification:** dcipher committee members observe the transfer and collaborate off-chain to generate BLS threshold signature.
+
+5. **Reimbursement & Completion:** Router verifies signature, releases locked funds to Solver, and marks SwapRequest as complete.
+
 

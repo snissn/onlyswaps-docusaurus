@@ -61,7 +61,7 @@ The total cost of a swap involves two main components, paid in the token being s
 1.  **Solver Fee:** The primary fee set by the user (or suggested by the API) to compensate the Solver for providing liquidity. This fee is dynamic and market-driven.
 2.  **Verification Fee:** A small percentage-based fee collected by the protocol to compensate the dcipher committee members for verifying the transaction.
 
-[Read more about the fee structure in the Reference section.](./reference/fees.md)
+[Read more about the fee structure in the Reference section.](../reference/fees.md)
 
 ### Limits
 

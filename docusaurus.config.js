@@ -58,23 +58,21 @@ const config = {
     ],
   ],
 
+  themes: ['@docusaurus/theme-mermaid'],
+
+  markdown: {
+    mermaid: true,
+  },
+
+
   plugins: [
     [
       '@docusaurus/plugin-content-docs',
       {
-        id: 'v1',
-        path: 'docs/v1/docs',
-        routeBasePath: 'v1',
-        sidebarPath: require.resolve('./sidebars.v1.js'),
-      },
-    ],
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'v2',
-        path: 'docs/v2',
-        routeBasePath: 'v2',
-        sidebarPath: require.resolve('./sidebars.v2.js'),
+        id: 'docs',
+        path: 'docs',
+        routeBasePath: 'docs',
+        sidebarPath: require.resolve('./sidebars.js'),
       },
     ],
   ],
@@ -103,8 +101,7 @@ const config = {
           {
             title: 'Docs',
             items: [
-              { label: 'Docs v2', to: '/v2' },
-              { label: 'Docs v1', to: '/v1' },
+              { label: 'Documentation', to: '/docs' },
             ],
           },
           {
