@@ -1,4 +1,3 @@
-````markdown
 # Frontend Quickstart: React & onlyswaps-ui
 
 This guide walks through building a fully functional cross-chain swap UI using React (specifically Next.js), TypeScript, and the `onlyswaps-ui` library. We will leverage `wagmi` and RainbowKit for wallet connectivity.
@@ -425,6 +424,4 @@ export default function SwapForm() {
     );
 }
 ```
-
-````
 

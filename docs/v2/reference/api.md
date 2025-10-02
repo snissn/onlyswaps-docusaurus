@@ -1,4 +1,3 @@
-```markdown
 # API and SDK Reference
 
 This document provides a comprehensive reference for the public APIs of the OnlySwaps protocol, covering the Solidity contracts, the JavaScript/TypeScript SDK, and the React UI library.
@@ -249,5 +248,4 @@ BN254 BLS signature verifier. It enforces application-scoped domain separation.
 
 A library containing custom errors used across the contracts for precise, gas-efficient reverts (e.g., `BLSSignatureVerificationFailed`, `SameVersionUpgradeNotAllowed`).
 
-```
 

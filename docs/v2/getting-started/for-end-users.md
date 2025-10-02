@@ -1,4 +1,3 @@
-```markdown
 # Getting Started for End Users
 
 This guide explains how to use the OnlySwaps protocol via the ONLYportal web interface to move tokens across different blockchain networks.
@@ -63,5 +62,4 @@ The `onlyswaps-ui` enforces certain limits on the amount that can be entered in 
 *   **Minimum Amount:** 0.01 tokens.
 *   **Maximum Amount:** 1,000,000,000 tokens.
 *   **Precision:** Amounts must have at most 2 decimal places for UI input validation, although the underlying contracts handle 18 decimals.
-```
 

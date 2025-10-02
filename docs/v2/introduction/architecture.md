@@ -1,4 +1,3 @@
-````markdown
 # Protocol Architecture
 
 The OnlySwaps protocol utilizes an intent-based architecture secured by threshold cryptography to facilitate cross-chain token transfers. This involves coordination between Users, Solvers, the decentralized dcipher committee, and the Router contracts deployed on supported chains.
@@ -80,8 +79,4 @@ sequenceDiagram
 4.  **Verification:** The dcipher committee (Verifiers) observes the successful transfer on the Destination Chain.
 5.  **Threshold Signing:** The committee members collaborate off-chain to generate a BLS threshold signature verifying the fulfillment.
 6.  **Reimbursement:** The aggregated signature is submitted to the Router on the Source Chain. The Router verifies the signature via the Scheme contract. If valid, the Router releases the locked funds and the fee to the Solver and marks the `SwapRequest` as complete (`executed`).
-
-<!-- end list -->
-
-````
 
