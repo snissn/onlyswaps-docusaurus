@@ -1,14 +1,14 @@
 ---
 sidebar_position: 2
 title: "Frontend Quickstart"
-description: "Build a cross-chain swap UI with React, Next.js, onlyswaps-ui, wagmi, and RainbowKit"
+description: "Build a cross-chain swap UI with React, Next.js, ONLYSwaps-ui, wagmi, and RainbowKit"
 keywords: ["frontend", "React", "Next.js", "UI", "wagmi", "RainbowKit", "quickstart"]
 date: "2024-01-15"
 ---
 
-# Frontend Quickstart: React & onlyswaps-ui
+# Frontend Quickstart: React & ONLYSwaps-ui
 
-This guide walks through building a fully functional cross-chain swap UI using React (specifically Next.js), TypeScript, and the `onlyswaps-ui` library. We will leverage `wagmi` and RainbowKit for wallet connectivity.
+This guide walks through building a fully functional cross-chain swap UI using React (specifically Next.js), TypeScript, and the `ONLYSwaps-ui` library. We will leverage `wagmi` and RainbowKit for wallet connectivity.
 
 **Objective:** Create a UI that allows users to select chains, enter an amount, mint test RUSD tokens, and execute a cross-chain swap.
 
@@ -23,21 +23,21 @@ This guide walks through building a fully functional cross-chain swap UI using R
 We will start with a standard Next.js project using TypeScript.
 
 ```bash
-npx create-next-app@latest onlyswaps-frontend --typescript --eslint --tailwind --src-dir --app --import-alias="@/*"
-cd onlyswaps-frontend
+npx create-next-app@latest ONLYSwaps-frontend --typescript --eslint --tailwind --src-dir --app --import-alias="@/*"
+cd ONLYSwaps-frontend
 ````
 
 ## Step 2: Install Dependencies
 
-Install the necessary Web3 libraries (`wagmi`, `viem`, RainbowKit) and the OnlySwaps libraries (`onlyswaps-ui`, `onlyswaps-js`). We also install `zod` and `@hookform/resolvers` for form validation.
+Install the necessary Web3 libraries (`wagmi`, `viem`, RainbowKit) and the ONLYSwaps libraries (`ONLYSwaps-ui`, `ONLYSwaps-js`). We also install `zod` and `@hookform/resolvers` for form validation.
 
 ```bash
-npm install wagmi viem @rainbow-me/rainbowkit onlyswaps-ui onlyswaps-js zod @hookform/resolvers react-hook-form
+npm install wagmi viem @rainbow-me/rainbowkit ONLYSwaps-ui ONLYSwaps-js zod @hookform/resolvers react-hook-form
 ```
 
 ## Step 3: Provider Configuration
 
-The `onlyswaps-ui` library exports `WagmiRainbowKitProviders`, which wraps Wagmi and RainbowKit. It is automatically configured with the `supportedChains` and `supportedTransports` defined in the library.
+The `ONLYSwaps-ui` library exports `WagmiRainbowKitProviders`, which wraps Wagmi and RainbowKit. It is automatically configured with the `supportedChains` and `supportedTransports` defined in the library.
 
 Create a `Providers` component that we can use in the root layout.
 
@@ -45,7 +45,7 @@ Create a `Providers` component that we can use in the root layout.
 // src/app/providers.tsx
 "use client";
 
-import { WagmiRainbowKitProviders } from 'onlyswaps-ui';
+import { WagmiRainbowKitProviders } from 'ONLYSwaps-ui';
 import { ReactNode } from 'react';
 
 export default function Providers({ children }: { children: ReactNode }) {
@@ -70,7 +70,7 @@ import { ConnectButton } from '@rainbow-me/rainbowkit';
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "OnlySwaps Frontend Demo",
+  title: "ONLYSwaps Frontend Demo",
 };
 
 export default function RootLayout({
@@ -97,7 +97,7 @@ export default function RootLayout({
 
 ## Step 4: Build the Swap Component (Form Setup)
 
-We will create the main swap interface. This involves setting up `react-hook-form` and using the validation schemas provided by `onlyswaps-ui`.
+We will create the main swap interface. This involves setting up `react-hook-form` and using the validation schemas provided by `ONLYSwaps-ui`.
 
 ```tsx
 // src/app/SwapForm.tsx
@@ -105,11 +105,11 @@ We will create the main swap interface. This involves setting up `react-hook-for
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { SwapFormSchema, supportedChains, chainConfigs, useOnlySwapsClient } from "onlyswaps-ui";
+import { SwapFormSchema, supportedChains, chainConfigs, useONLYSwapsClient } from "ONLYSwaps-ui";
 import { z } from "zod";
 import { useAccount } from "wagmi";
 import { useState } from 'react';
-import { rusdFromNumber } from 'onlyswaps-js';
+import { rusdFromNumber } from 'ONLYSwaps-js';
 
 type SwapFormData = z.infer<typeof SwapFormSchema>;
 
@@ -134,12 +134,12 @@ export default function SwapForm() {
   const sourceChainId = watch("sourceChain");
   const sourceChainIdNum = parseInt(sourceChainId);
 
-  // Get the OnlySwaps client bound to the source chain
-  const { onlyswaps } = useOnlySwapsClient({ chainId: sourceChainIdNum });
+  // Get the ONLYSwaps client bound to the source chain
+  const { ONLYSwaps } = useONLYSwapsClient({ chainId: sourceChainIdNum });
 
   // Implementation detailed in Step 6
   const onSubmit = async (data: SwapFormData) => {
-     if (!onlyswaps || !address) {
+     if (!ONLYSwaps || !address) {
       alert("Clients not ready or wallet not connected.");
       return;
     }
@@ -160,7 +160,7 @@ export default function SwapForm() {
       const feeBigInt = rusdFromNumber(data.fee);
 
       // 3. Execute the swap
-      const response = await onlyswaps.swap({
+      const response = await ONLYSwaps.swap({
         recipient: address,
         srcTokenAddress,
         destTokenAddress,
@@ -221,7 +221,7 @@ export default function SwapForm() {
         {errors.fee && <p style={{ color: 'red' }}>{errors.fee.message}</p>}
       </div>
 
-       <button type="submit" disabled={!onlyswaps || isSwapping}>
+       <button type="submit" disabled={!ONLYSwaps || isSwapping}>
            {isSwapping ? 'Swapping...' : 'Execute Swap'}
        </button>
     </form>
@@ -238,7 +238,7 @@ import SwapForm from './SwapForm';
 export default function Home() {
   return (
     <div>
-      <h1>OnlySwaps Demo</h1>
+      <h1>ONLYSwaps Demo</h1>
       <SwapForm />
     </div>
   );
@@ -247,7 +247,7 @@ export default function Home() {
 
 ## Step 5: Fetching Data & Minting
 
-Before a user can swap, they need RUSD tokens (the test currency). We use the `useRusd` hook from `onlyswaps-ui` to check the balance and mint tokens on the selected source chain.
+Before a user can swap, they need RUSD tokens (the test currency). We use the `useRusd` hook from `ONLYSwaps-ui` to check the balance and mint tokens on the selected source chain.
 
 Update `src/app/SwapForm.tsx` to include balance display and minting functionality.
 
@@ -257,8 +257,8 @@ Update `src/app/SwapForm.tsx` to include balance display and minting functionali
 
 // ... (other imports)
 import { useEffect } from 'react';
-import { useRusd } from 'onlyswaps-ui';
-import { rusdToString } from 'onlyswaps-js';
+import { useRusd } from 'ONLYSwaps-ui';
+import { rusdToString } from 'ONLYSwaps-js';
 
 export default function SwapForm() {
   // ... (existing setup: useAccount, useForm, sourceChainIdNum)
@@ -334,11 +334,11 @@ export default function SwapForm() {
 
 The execution logic was implemented within the `onSubmit` handler in Step 4 and refined in Step 5. Key actions include:
 
-1.  Using `useOnlySwapsClient` to get the client instance.
+1.  Using `useONLYSwapsClient` to get the client instance.
 2.  Validating input using `zodResolver(SwapFormSchema)`.
 3.  Converting UI amounts (`number`) to `bigint` using `rusdFromNumber`.
 4.  Resolving `srcTokenAddress` and `destTokenAddress` from `chainConfigs`.
-5.  Calling `onlyswaps.swap()` with the validated request object. The SDK handles the necessary ERC20 approval.
+5.  Calling `ONLYSwaps.swap()` with the validated request object. The SDK handles the necessary ERC20 approval.
 
 ## Step 7: Tracking Status
 
@@ -351,7 +351,7 @@ Create a new component `SwapStatusTracker.tsx`.
 "use client";
 
 import { useState, useEffect } from 'react';
-import { useOnlySwapsClient } from 'onlyswaps-ui';
+import { useONLYSwapsClient } from 'ONLYSwaps-ui';
 
 interface SwapStatusTrackerProps {
   requestId: `0x${string}`;
@@ -364,8 +364,8 @@ export default function SwapStatusTracker({ requestId, sourceChainId, destinatio
   const [isComplete, setIsComplete] = useState(false);
 
   // Get clients for both source and destination chains
-  const { onlyswaps: onlySrc } = useOnlySwapsClient({ chainId: sourceChainId });
-  const { onlyswaps: onlyDest } = useOnlySwapsClient({ chainId: destinationChainId });
+  const { ONLYSwaps: onlySrc } = useONLYSwapsClient({ chainId: sourceChainId });
+  const { ONLYSwaps: onlyDest } = useONLYSwapsClient({ chainId: destinationChainId });
 
   useEffect(() => {
     if (!onlySrc || !onlyDest) return;

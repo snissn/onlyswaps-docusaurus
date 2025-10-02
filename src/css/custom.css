@@ -6,30 +6,30 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-color-primary: #1E3CFF;
+  --ifm-color-primary-dark: #1A35E6;
+  --ifm-color-primary-darker: #1832D9;
+  --ifm-color-primary-darkest: #142BCC;
+  --ifm-color-primary-light: #3243FF;
+  --ifm-color-primary-lighter: #4554FF;
+  --ifm-color-primary-lightest: #5865FF;
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --docusaurus-highlighted-code-line-bg: rgba(30, 60, 255, 0.1);
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --ifm-color-primary: #4A6BFF;
+  --ifm-color-primary-dark: #3E5FFF;
+  --ifm-color-primary-darker: #3858FF;
+  --ifm-color-primary-darkest: #2C4BFF;
+  --ifm-color-primary-light: #5C7AFF;
+  --ifm-color-primary-lighter: #6E89FF;
+  --ifm-color-primary-lightest: #8098FF;
+  --docusaurus-highlighted-code-line-bg: rgba(30, 60, 255, 0.3);
 }
 
-/* OnlySwaps navbar branding font */
+/* ONLYSwaps navbar branding font */
 @font-face {
   font-family: 'Funnel Display';
   src: url('/fonts/funnel-display.woff2') format('woff2');
@@ -43,4 +43,119 @@
   font-weight: 400;
   letter-spacing: 0.2px;
   font-size: 1.4rem;
+}
+
+/* Dcipher-inspired color scheme for interactive elements */
+.navbar__item:hover,
+.navbar__link:hover,
+.navbar__brand:hover {
+  color: var(--ifm-color-primary);
+}
+
+/* Button styling to match dcipher blue */
+.button--primary {
+  background-color: var(--ifm-color-primary);
+  border-color: var(--ifm-color-primary);
+}
+
+.button--primary:hover {
+  background-color: var(--ifm-color-primary-dark);
+  border-color: var(--ifm-color-primary-dark);
+}
+
+/* Sidebar active item styling */
+.menu__link--active {
+  color: var(--ifm-color-primary);
+}
+
+/* Code highlighting to match theme */
+.token.property {
+  color: var(--ifm-color-primary);
+}
+
+/* Footer links */
+.footer__link-item:hover {
+  color: var(--ifm-color-primary);
+}
+
+/* Pagination */
+.pagination-nav__link:hover {
+  border-color: var(--ifm-color-primary);
+  color: var(--ifm-color-primary);
+}
+
+/* Table of contents */
+.table-of-contents__link--active {
+  color: var(--ifm-color-primary);
+}
+
+.table-of-contents__link:hover {
+  color: var(--ifm-color-primary);
+}
+
+/* Custom card styling for the home page */
+.card {
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  transition: all 0.2s ease;
+  background: var(--ifm-background-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 4px 16px rgba(30, 60, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.card__header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.card__image {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 1rem;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.card:hover .card__image {
+  opacity: 1;
+}
+
+.card__header h3 {
+  color: var(--ifm-color-primary);
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.card__body p {
+  color: var(--ifm-color-content);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.card__body ul {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.card__body li {
+  margin-bottom: 0.5rem;
+}
+
+.card__body a {
+  color: var(--ifm-color-primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.card__body a:hover {
+  color: var(--ifm-color-primary-dark);
+  text-decoration: underline;
 }

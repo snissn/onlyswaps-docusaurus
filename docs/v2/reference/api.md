@@ -1,32 +1,32 @@
 ---
 sidebar_position: 1
 title: "API and SDK Reference"
-description: "Comprehensive reference for OnlySwaps APIs including onlyswaps-ui, onlyswaps-js, and Solidity contracts"
-keywords: ["API", "reference", "SDK", "onlyswaps-ui", "onlyswaps-js", "Solidity", "contracts"]
+description: "Comprehensive reference for ONLYSwaps APIs including ONLYSwaps-ui, ONLYSwaps-js, and Solidity contracts"
+keywords: ["API", "reference", "SDK", "ONLYSwaps-ui", "ONLYSwaps-js", "Solidity", "contracts"]
 date: "2024-01-15"
 ---
 
 # API and SDK Reference
 
-This document provides a comprehensive reference for the public APIs of the OnlySwaps protocol, covering the Solidity contracts, the JavaScript/TypeScript SDK, and the React UI library.
+This document provides a comprehensive reference for the public APIs of the ONLYSwaps protocol, covering the Solidity contracts, the JavaScript/TypeScript SDK, and the React UI library.
 
 ---
 
-## `onlyswaps-ui` (React/Next.js)
+## `ONLYSwaps-ui` (React/Next.js)
 
 A library providing React hooks, providers, and configuration for building cross-chain swap UIs. Works seamlessly with `wagmi` and RainbowKit.
 
 ### Hooks
 
-#### `useOnlySwapsClient(props?)`
+#### `useONLYSwapsClient(props?)`
 
-React hook that returns an OnlySwaps client (`OnlySwaps` interface) bound to the current (or provided) chain.
+React hook that returns an ONLYSwaps client (`ONLYSwaps` interface) bound to the current (or provided) chain.
 
-*   **Props (`UseOnlySwapsProps`):**
+*   **Props (`UseONLYSwapsProps`):**
     *   `chainId?: number`: Optional chain ID to target a specific network.
-*   **Returns (`UseOnlySwapsReturn`):**
+*   **Returns (`UseONLYSwapsReturn`):**
     *   `walletClient?: WalletClient`
-    *   `onlyswaps?: OnlySwaps`
+    *   `ONLYSwaps?: ONLYSwaps`
 *   **Note:** Fields may be `undefined` while the wallet or clients are loading.
 
 #### `useRusd(props)`
@@ -85,15 +85,15 @@ export const SwapFormSchema = z.object({
 
 -----
 
-## `onlyswaps-js` (TypeScript SDK)
+## `ONLYSwaps-js` (TypeScript SDK)
 
-A lightweight TypeScript client built on `viem` for interacting with the OnlySwaps Router and RUSD contracts.
+A lightweight TypeScript client built on `viem` for interacting with the ONLYSwaps Router and RUSD contracts.
 
 ### Clients
 
-#### `OnlySwapsViemClient`
+#### `ONLYSwapsViemClient`
 
-Viem-backed client for the OnlySwaps Router. Implements the `OnlySwaps` interface.
+Viem-backed client for the ONLYSwaps Router. Implements the `ONLYSwaps` interface.
 
   * **Constructor:**
     ```typescript
@@ -104,7 +104,7 @@ Viem-backed client for the OnlySwaps Router. Implements the `OnlySwaps` interfac
       private walletClient: WalletClient,
     );
     ```
-  * **Methods:** See `OnlySwaps` interface below.
+  * **Methods:** See `ONLYSwaps` interface below.
 
 #### `RUSDViemClient`
 
@@ -114,12 +114,12 @@ Minimal ERC-20 faucet token (RUSD) client. Implements the `RUSD` interface.
 
 ### Interfaces
 
-#### `OnlySwaps`
+#### `ONLYSwaps`
 
 High-level Router operations.
 
 ```typescript
-export interface OnlySwaps {
+export interface ONLYSwaps {
   // Initiates a swap. Handles approval automatically if an RUSD client is provided.
   swap(options: SwapRequest, client?: RUSD): Promise<SwapResponse>;
   // Updates the fee for a pending swap.
@@ -202,9 +202,9 @@ Utilities for converting between `bigint` and human-readable formats.
 
 -----
 
-## `onlyswaps/solidity`
+## `ONLYSwaps/solidity`
 
-The core smart contracts for the OnlySwaps protocol.
+The core smart contracts for the ONLYSwaps protocol.
 
 ### Core Contracts
 

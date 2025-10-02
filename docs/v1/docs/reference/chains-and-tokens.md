@@ -18,7 +18,7 @@ Use `chainConfigs` as the source of truth for supported networks and contract ad
 You can import the helpers:
 
 ```ts
-import { chainConfigs, supportedChains, supportedTransports } from 'onlyswaps-ui';
+import { chainConfigs, supportedChains, supportedTransports } from 'ONLYSwaps-ui';
 ```
 
 * `supportedChains` drives Wagmi/RainbowKit config. 

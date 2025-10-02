@@ -12,7 +12,7 @@ This section walks through the on‑chain/off‑chain flow and the core componen
 sequenceDiagram
   participant User
   participant ONLYportal
-  participant onlyswaps-js
+  participant ONLYSwaps-js
   participant FeesAPI
   participant Router as Router(Source Chain)
   participant Scheme as Scheme(Source Chain)
@@ -24,12 +24,12 @@ sequenceDiagram
   User->>ONLYportal: Connect wallet & enter params
   ONLYportal->>FeesAPI: Request suggested fee
   FeesAPI-->>ONLYportal: Suggested fee
-  ONLYportal->>onlyswaps-js: Forward fee & params
-  onlyswaps-js-->>User: Display suggested fee
+  ONLYportal->>ONLYSwaps-js: Forward fee & params
+  ONLYSwaps-js-->>User: Display suggested fee
 
   %% Step 1: Create Swap Request
-  User->>onlyswaps-js: Submit swap (amount, dstChain, minFee)
-  onlyswaps-js->>Router: Lock tokens & create SwapRequest
+  User->>ONLYSwaps-js: Submit swap (amount, dstChain, minFee)
+  ONLYSwaps-js->>Router: Lock tokens & create SwapRequest
   Router-->>Solver: Emit SwapRequest event
   Router-->>Verifier: Emit SwapRequest event
 
@@ -59,7 +59,7 @@ The diagram reflects the protocol lifecycle: user request, solver fulfillment on
 
 ### Signature scheme and domain separation
 
-OnlySwaps uses a BN254 BLS signature scheme with application‑scoped domain separation (e.g., `"swap-v1"`, `"upgrade-v1"`). A dedicated contract wraps the library:
+ONLYSwaps uses a BN254 BLS signature scheme with application‑scoped domain separation (e.g., `"swap-v1"`, `"upgrade-v1"`). A dedicated contract wraps the library:
 
 ```solidity
 contract BLSBN254SignatureScheme is BN254SignatureScheme {

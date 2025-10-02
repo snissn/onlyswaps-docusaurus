@@ -6,7 +6,7 @@ sidebar_position: 1
 
 ## Access the app
 
-Use the OnlySwaps web app (OnlyPortal) to connect your wallet, create swap requests, update fees, track status, see solver details, and cancel swaps if needed. :contentReference[oaicite:61]{index=61}
+Use the ONLYSwaps web app (OnlyPortal) to connect your wallet, create swap requests, update fees, track status, see solver details, and cancel swaps if needed. :contentReference[oaicite:61]{index=61}
 
 ## Wallet setup & connection
 
@@ -22,7 +22,7 @@ Use the OnlySwaps web app (OnlyPortal) to connect your wallet, create swap reque
 4) Submit the swap; you’ll receive a requestId to track progress.  
 5) Watch status (source chain) and receipt (destination chain) until they show executed/fulfilled. :contentReference[oaicite:63]{index=63}
 
-> Note: OnlySwaps currently supports like‑for‑like tokens across chains (e.g., RUSD → RUSD). Non‑like pairs are planned. :contentReference[oaicite:64]{index=64}
+> Note: ONLYSwaps currently supports like‑for‑like tokens across chains (e.g., RUSD → RUSD). Non‑like pairs are planned. :contentReference[oaicite:64]{index=64}
 
 ## Fees & limits
 

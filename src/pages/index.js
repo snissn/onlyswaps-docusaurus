@@ -4,10 +4,10 @@ import Link from '@docusaurus/Link';
 
 export default function Home() {
   return (
-    <Layout title="Docs Versions" description="Compare OnlySwaps Docs versions">
+    <Layout title="Docs Versions" description="Compare ONLYSwaps Docs versions">
       <main style={{padding: '4rem 1rem'}}>
         <div style={{maxWidth: 900, margin: '0 auto', textAlign: 'center'}}>
-          <h1 style={{fontSize: '2.2rem', marginBottom: '0.5rem'}}>OnlySwaps Documentation</h1>
+          <h1 style={{fontSize: '2.2rem', marginBottom: '0.5rem'}}>ONLYSwaps Documentation</h1>
           <p style={{opacity: 0.8, marginBottom: '2rem'}}>
             Compare two alternative versions side by side.
           </p>

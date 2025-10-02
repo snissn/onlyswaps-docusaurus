@@ -8,11 +8,11 @@ This page lists the public surface across UI hooks, JS clients, and Solidity int
 
 ---
 
-## onlyswaps-ui (React)
+## ONLYSwaps-ui (React)
 
 ### Hooks
 
-`useOnlySwapsClient(props?: { chainId?: number })` → `{ onlyswaps?, walletClient? }`  
+`useONLYSwapsClient(props?: { chainId?: number })` → `{ ONLYSwaps?, walletClient? }`  
 Returns a client bound to the current (or provided) chain when Wagmi providers and wallet are ready. Use `chainConfigs[chainId].router` to build requests. :contentReference[oaicite:73]{index=73}
 
 `useRusd({ chainId: number, address?: 0x… })` → `{ rusd? }`  
@@ -34,11 +34,11 @@ Returns a viem‑backed RUSD client bound to the given chain/address. :contentRe
 
 ---
 
-## onlyswaps-js (TypeScript)
+## ONLYSwaps-js (TypeScript)
 
 ### Clients
 
-OnlySwapsViemClient  
+ONLYSwapsViemClient  
 `constructor(account, routerAddress, publicClient, walletClient, abi?)`
 - `fetchRecommendedFee(tokenAddress, amount, srcId, dstId) → bigint`  
 - `swap(request: SwapRequest, client?: RUSD) → Promise<SwapResponse>`  

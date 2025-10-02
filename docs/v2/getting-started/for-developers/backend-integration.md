@@ -1,14 +1,14 @@
 ---
 sidebar_position: 3
 title: "Backend Integration"
-description: "Programmatic cross-chain swaps using onlyswaps-js SDK, viem, and Node.js for backend services"
-keywords: ["backend", "programmatic", "Node.js", "viem", "onlyswaps-js", "TypeScript"]
+description: "Programmatic cross-chain swaps using ONLYSwaps-js SDK, viem, and Node.js for backend services"
+keywords: ["backend", "programmatic", "Node.js", "viem", "ONLYSwaps-js", "TypeScript"]
 date: "2024-01-15"
 ---
 
-# Backend & Programmatic Swaps: onlyswaps-js & viem
+# Backend & Programmatic Swaps: ONLYSwaps-js & viem
 
-This guide demonstrates how to initiate, monitor, and manage cross-chain swaps programmatically from a backend service or script using the `onlyswaps-js` SDK and `viem`.
+This guide demonstrates how to initiate, monitor, and manage cross-chain swaps programmatically from a backend service or script using the `ONLYSwaps-js` SDK and `viem`.
 
 **Objective:** Execute a full end-to-end cross-chain swap workflow, including minting test tokens, approving the router, initiating the swap, updating the fee, and tracking completion.
 
@@ -23,10 +23,10 @@ This guide demonstrates how to initiate, monitor, and manage cross-chain swaps p
 Set up a simple Node.js project with TypeScript.
 
 ```bash
-mkdir onlyswaps-backend
-cd onlyswaps-backend
+mkdir ONLYSwaps-backend
+cd ONLYSwaps-backend
 npm init -y
-npm install typescript ts-node viem onlyswaps-js dotenv
+npm install typescript ts-node viem ONLYSwaps-js dotenv
 npx tsc --init
 ```
 
@@ -111,15 +111,15 @@ console.log(`Initialized clients for Account: ${MY_ADDRESS}`);
 console.log(`Source: ${SRC_CHAIN.name}, Destination: ${DEST_CHAIN.name}`);
 ```
 
-## Step 3: Instantiating OnlySwaps Clients
+## Step 3: Instantiating ONLYSwaps Clients
 
-Now we instantiate the `onlyswaps-js` clients using the `viem` clients.
+Now we instantiate the `ONLYSwaps-js` clients using the `viem` clients.
 
 Create `src/clients.ts`.
 
 ```typescript
 // src/clients.ts
-import { OnlySwapsViemClient, RUSDViemClient } from "onlyswaps-js";
+import { ONLYSwapsViemClient, RUSDViemClient } from "ONLYSwaps-js";
 import {
   CONFIG,
   MY_ADDRESS,
@@ -137,20 +137,20 @@ export const rusdClient = new RUSDViemClient(
   srcWalletClient
 );
 
-// OnlySwaps Router Client (Source Chain)
+// ONLYSwaps Router Client (Source Chain)
 // Used for initiating swaps and updating fees.
-export const onlySwapsSrcClient = new OnlySwapsViemClient(
+export const ONLYSwapsSrcClient = new ONLYSwapsViemClient(
   MY_ADDRESS,
   CONFIG.ROUTER,
   srcPublicClient,
   srcWalletClient
 );
 
-// OnlySwaps Router Client (Destination Chain)
+// ONLYSwaps Router Client (Destination Chain)
 // Used for checking fulfillment status (receipts).
 // Note: WalletClient is required by the constructor. We pass the source wallet client
 // as a placeholder since we only intend to read (fetchReceipt) on the destination.
-export const onlySwapsDestClient = new OnlySwapsViemClient(
+export const ONLYSwapsDestClient = new ONLYSwapsViemClient(
   MY_ADDRESS,
   CONFIG.ROUTER, // Assumes same router address on destination
   destPublicClient,
@@ -166,12 +166,12 @@ Create `src/execute-swap.ts`.
 
 ```typescript
 // src/execute-swap.ts
-import { rusdClient, onlySwapsSrcClient, onlySwapsDestClient } from "./clients";
+import { rusdClient, ONLYSwapsSrcClient, ONLYSwapsDestClient } from "./clients";
 import { CONFIG, MY_ADDRESS } from "./config";
-import { rusdFromNumber, rusdToString, SwapRequest } from "onlyswaps-js";
+import { rusdFromNumber, rusdToString, SwapRequest } from "ONLYSwaps-js";
 
 async function main() {
-  console.log("Starting OnlySwaps backend integration workflow...");
+  console.log("Starting ONLYSwaps backend integration workflow...");
 
   const SWAP_AMOUNT_NUM = 10; // 10 RUSD
   const INITIAL_FEE_NUM = 0.1; // 0.1 RUSD
@@ -219,7 +219,7 @@ async function main() {
   // 3. Fetch a suggested fee
   try {
     console.log("3. Fetching recommended fee...");
-    const recommendedFee = await onlySwapsSrcClient.fetchRecommendedFee(
+    const recommendedFee = await ONLYSwapsSrcClient.fetchRecommendedFee(
         CONFIG.RUSD,
         swapAmount,
         BigInt(CONFIG.SRC_CHAIN_ID),
@@ -243,8 +243,8 @@ async function main() {
   try {
     console.log("4. Initiating swap...");
     // If we hadn't approved manually in Step 2, we could pass rusdClient here for automatic approval:
-    // const response = await onlySwapsSrcClient.swap(swapRequest, rusdClient);
-    const response = await onlySwapsSrcClient.swap(swapRequest);
+    // const response = await ONLYSwapsSrcClient.swap(swapRequest, rusdClient);
+    const response = await ONLYSwapsSrcClient.swap(swapRequest);
     requestId = response.requestId;
     console.log(`Swap initiated successfully! Request ID: ${requestId}`);
   } catch (error) {
@@ -262,10 +262,10 @@ async function main() {
     console.log(`Approving new total allowance for the increased fee...`);
     await rusdClient.approveSpend(CONFIG.ROUTER, newFee + swapAmount);
 
-    await onlySwapsSrcClient.updateFee(requestId, newFee);
+    await ONLYSwapsSrcClient.updateFee(requestId, newFee);
     console.log(`Fee updated to ${rusdToString(newFee)}.`);
 
-    const statusAfterBump = await onlySwapsSrcClient.fetchStatus(requestId);
+    const statusAfterBump = await ONLYSwapsSrcClient.fetchStatus(requestId);
     console.log(`Current Solver Fee on record: ${rusdToString(statusAfterBump.solverFee)}`);
 
   } catch (error) {
@@ -279,9 +279,9 @@ async function main() {
   while (!isComplete) {
     try {
       // Check status on source chain (dcipher verification)
-      const status = await onlySwapsSrcClient.fetchStatus(requestId);
+      const status = await ONLYSwapsSrcClient.fetchStatus(requestId);
       // Check receipt on destination chain (Solver fulfillment)
-      const receipt = await onlySwapsDestClient.fetchReceipt(requestId);
+      const receipt = await ONLYSwapsDestClient.fetchReceipt(requestId);
 
       console.log(`[Status] Source (Executed): ${status.executed}, Destination (Fulfilled): ${receipt.fulfilled}`);
 

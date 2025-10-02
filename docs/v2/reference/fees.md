@@ -1,11 +1,14 @@
-```markdown
 ---
 sidebar_position: 3
+title: "Fee Structure"
+description: "Learn about ONLYSwaps transparent fee structure including solver fees, verification fees, and how fees are calculated and distributed"
+keywords: ["fees", "solver fee", "verification fee", "BPS", "gas costs", "dcipher committee"]
+date: "2024-01-15"
 ---
 
 # Fee Structure
 
-The OnlySwaps protocol incorporates a transparent fee structure designed to incentivize participation from both liquidity providers (Solvers) and the decentralized verification network (dcipher committee). Fees are paid by the user initiating the swap and are denominated in the token being transferred.
+The ONLYSwaps protocol incorporates a transparent fee structure designed to incentivize participation from both liquidity providers (Solvers) and the decentralized verification network (dcipher committee). Fees are paid by the user initiating the swap and are denominated in the token being transferred.
 
 ## Overview
 
@@ -20,7 +23,7 @@ When a user initiates a swap, the total amount locked on the source chain is `Sw
 *   **Incentives:** If the fee is too low, Solvers may not find the transaction profitable, leading to delays.
 *   **Dynamic Updates:** Users can dynamically increase the fee for a pending swap using the `updateFee()` function (accessible via the SDK or UI) to incentivize faster fulfillment.
 
-**Fee Recommendation:** OnlySwaps provides a centralized Fees API (accessible via `onlySwaps.fetchRecommendedFee()` in the SDK) that monitors gas prices, liquidity, and fulfillment rates to suggest an optimal fee.
+**Fee Recommendation:** ONLYSwaps provides a centralized Fees API (accessible via `ONLYSwaps.fetchRecommendedFee()` in the SDK) that monitors gas prices, liquidity, and fulfillment rates to suggest an optimal fee.
 
 ### 2. Verification Fee
 
@@ -49,5 +52,4 @@ The final distribution of funds upon successful swap completion is:
 
 <!-- end list -->
 
-````
 

@@ -1,13 +1,12 @@
-```markdown
 ---
 sidebar_position: 4
-title: "Frequently Asked Questions"
-description: "Common questions and answers about OnlySwaps protocol, usage, and troubleshooting"
+title: "FAQs"
+description: "Common questions and answers about ONLYSwaps protocol, usage, and troubleshooting"
 keywords: ["FAQ", "questions", "troubleshooting", "help", "support"]
 date: "2024-01-15"
 ---
 
-# Frequently Asked Questions (FAQ)
+# FAQs
 
 ## General Questions
 
@@ -26,33 +25,33 @@ The set of supported chains is defined by the protocol's configuration. Currentl
 
 ### What tokens are supported?
 
-Currently, OnlySwaps primarily supports swapping like-for-like tokens (e.g., RUSD on Base to RUSD on Avalanche). Support for more 'exotic' pairs (swapping different tokens) is planned for future releases.
+Currently, ONLYSwaps primarily supports swapping like-for-like tokens (e.g., RUSD on Base to RUSD on Avalanche). Support for more 'exotic' pairs (swapping different tokens) is planned for future releases.
 
 ## Developer Questions (SDK & UI)
 
-### What units do `amount` and `fee` use in `onlyswaps-js`?
+### What units do `amount` and `fee` use in `ONLYSwaps-js`?
 
 Both `amount` and `fee` must be 18-decimal fixed-point `bigint`s. For example, `1000000000000000000n` (or `10n**18n`) represents 1.0 RUSD.
 
 ### How should I represent amounts in the UI?
 
-Keep UI amounts as standard JavaScript `number`s and validate them using the `amountSchema` from `onlyswaps-ui` (which enforces limits and 2 decimal places). Before calling the SDK clients, convert these numbers to `bigint` using the `rusdFromNumber()` helper from `onlyswaps-js`.
+Keep UI amounts as standard JavaScript `number`s and validate them using the `amountSchema` from `ONLYSwaps-ui` (which enforces limits and 2 decimal places). Before calling the SDK clients, convert these numbers to `bigint` using the `rusdFromNumber()` helper from `ONLYSwaps-js`.
 
 ### Does `rusdToString` round the values?
 
 No. The output of `rusdToString` is truncated to the requested number of decimals.
 
-### My UI hook (e.g., `useOnlySwapsClient`) is returning `{}` (undefined clients). Why?
+### My UI hook (e.g., `useONLYSwapsClient`) is returning `{}` (undefined clients). Why?
 
-This means the underlying Wagmi Wallet Client or Public Client is not yet available, or the user has not connected their wallet. You must guard your calls until the `onlyswaps` or `rusd` clients are defined in the hook's return object.
+This means the underlying Wagmi Wallet Client or Public Client is not yet available, or the user has not connected their wallet. You must guard your calls until the `ONLYSwaps` or `rusd` clients are defined in the hook's return object.
 
 ### Do I need to handle ERC20 approvals before swapping?
 
-Yes, the Router must be approved to spend the user's tokens (amount + fee). However, the `OnlySwapsViemClient.swap()` method (used by the UI hook) handles this approval automatically before initiating the swap, provided the necessary context is available.
+Yes, the Router must be approved to spend the user's tokens (amount + fee). However, the `ONLYSwapsViemClient.swap()` method (used by the UI hook) handles this approval automatically before initiating the swap, provided the necessary context is available.
 
 ### How is the `requestId` obtained after a swap?
 
-The `requestId` is generated on-chain and emitted via the `SwapRequested` event. The `onlyswaps-js` client parses this event from the transaction receipt logs and returns the `requestId`.
+The `requestId` is generated on-chain and emitted via the `SwapRequested` event. The `ONLYSwaps-js` client parses this event from the transaction receipt logs and returns the `requestId`.
 
 ## Smart Contract Questions (Solidity)
 
@@ -71,5 +70,4 @@ The default delay is two days. Attempts to schedule an upgrade sooner than this 
 ### How do I generate the message to sign for upgrades or validator updates?
 
 On the Router contract, call the helper functions `contractUpgradeParamsToBytes` or `blsValidatorUpdateParamsToBytes`. These functions return the message bytes (specifically, the message as G1 bytes) which must then be signed off-chain using the committee's BLS keys.
-```
 

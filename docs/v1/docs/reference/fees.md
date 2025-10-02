@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # Fees
 
-OnlySwaps uses two fee dimensions:
+ONLYSwaps uses two fee dimensions:
 
 1) Solver fee (a.k.a. resolver fee): user‑chosen incentive that motivates a solver to fulfill quickly on the destination chain. A Fees API can suggest a recommended fee based on gas, liquidity, solver count, and fill rates. You can increase this fee later with `updateFee`. :contentReference[oaicite:97]{index=97} :contentReference[oaicite:98]{index=98}
 

@@ -1,0 +1,93 @@
+.card {
+  background: var(--ifm-card-background-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: var(--ifm-card-border-radius);
+  box-shadow: var(--ifm-global-shadow-lw);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  transition: all var(--ifm-transition-fast) var(--ifm-transition-timing-default);
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.card:hover {
+  box-shadow: var(--ifm-global-shadow-md);
+  transform: translateY(-2px);
+  text-decoration: none;
+  color: inherit;
+}
+
+.card:focus {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 2px;
+}
+
+.cardHeader {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: var(--ifm-card-vertical-spacing) var(--ifm-card-horizontal-spacing);
+  text-align: center;
+}
+
+.cardImage {
+  height: 64px;
+  margin-bottom: var(--ifm-spacing-sm);
+  width: 64px;
+}
+
+.cardTitle {
+  color: var(--ifm-heading-color);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.cardBody {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 0 var(--ifm-card-horizontal-spacing) var(--ifm-card-vertical-spacing);
+}
+
+.cardDescription {
+  color: var(--ifm-color-content-secondary);
+  flex: 1;
+  margin-bottom: var(--ifm-spacing-md);
+}
+
+.cardAction {
+  margin-top: auto;
+  padding-top: var(--ifm-spacing-md);
+}
+
+.cardActionText {
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  transition: all var(--ifm-transition-fast) var(--ifm-transition-timing-default);
+}
+
+.card:hover .cardActionText {
+  color: var(--ifm-color-primary-dark);
+  transform: translateX(4px);
+}
+
+/* Responsive grid container */
+.cardGrid {
+  display: grid;
+  gap: var(--ifm-spacing-lg);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  margin: var(--ifm-spacing-lg) 0;
+}
+
+@media (max-width: 996px) {
+  .cardGrid {
+    grid-template-columns: 1fr;
+  }
+}

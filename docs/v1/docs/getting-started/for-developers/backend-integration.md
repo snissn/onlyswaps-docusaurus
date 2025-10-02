@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # Backend & Programmatic Swaps (Node/TypeScript)
 
-Goal: Kick off and monitor swaps from a backend or script using `viem` + `onlyswaps-js`.
+Goal: Kick off and monitor swaps from a backend or script using `viem` + `ONLYSwaps-js`.
 
 ## Prerequisites
 
@@ -15,9 +15,9 @@ Goal: Kick off and monitor swaps from a backend or script using `viem` + `onlysw
 ## 1) Project setup
 
 ```bash
-mkdir onlyswaps-script && cd $_
+mkdir ONLYSwaps-script && cd $_
 pnpm init -y
-pnpm add typescript ts-node viem onlyswaps-js
+pnpm add typescript ts-node viem ONLYSwaps-js
 pnpm exec tsc --init
 ```
 
@@ -37,15 +37,15 @@ export function makeClients(pk: `0x${string}`) {
 }
 ```
 
-## 3) Instantiate OnlySwaps & RUSD clients
+## 3) Instantiate ONLYSwaps & RUSD clients
 
 ```ts
 // only.ts
-import { OnlySwapsViemClient, RUSDViemClient } from 'onlyswaps-js';
+import { ONLYSwapsViemClient, RUSDViemClient } from 'ONLYSwaps-js';
 
 export function makeOnly(account: `0x${string}`, router: `0x${string}`, rusd: `0x${string}`, pc: any, wc: any) {
   const rusdClient = new RUSDViemClient(account, rusd, pc, wc);
-  const only = new OnlySwapsViemClient(account, router, pc, wc);
+  const only = new ONLYSwapsViemClient(account, router, pc, wc);
   return { only, rusdClient };
 }
 ```
@@ -56,8 +56,8 @@ The JS client exposes: `swap`, `fetchRecommendedFee`, `updateFee`, `fetchStatus`
 
 ```ts
 // run.ts
-import { rusdFromString } from 'onlyswaps-js';
-import type { SwapRequest } from 'onlyswaps-js';
+import { rusdFromString } from 'ONLYSwaps-js';
+import type { SwapRequest } from 'ONLYSwaps-js';
 import { makeClients } from './client';
 import { makeOnly } from './only';
 

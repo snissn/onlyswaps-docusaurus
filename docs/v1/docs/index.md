@@ -1,6 +1,6 @@
-# Welcome to OnlySwaps
+# Welcome to ONLYSwaps
 
-OnlySwaps is a developer-first, cross‑chain swap protocol designed to make moving like‑for‑like tokens between EVM chains fast, auditable, and easy to integrate. It combines an on‑chain Router (order book), solvers that provide liquidity across chains, and a dcipher committee that threshold‑verifies fulfillment using BN254 BLS signatures. :contentReference[oaicite:0]{index=0} :contentReference[oaicite:1]{index=1}
+ONLYSwaps is a developer-first, cross‑chain swap protocol designed to make moving like‑for‑like tokens between EVM chains fast, auditable, and easy to integrate. It combines an on‑chain Router (order book), solvers that provide liquidity across chains, and a dcipher committee that threshold‑verifies fulfillment using BN254 BLS signatures. :contentReference[oaicite:0]{index=0} :contentReference[oaicite:1]{index=1}
 
 > TL;DR  
 > Lock tokens on the source chain → a solver pays you on the destination chain → a dcipher committee verifies and reimburses the solver on the source chain. :contentReference[oaicite:2]{index=2}

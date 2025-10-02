@@ -4,11 +4,11 @@ sidebar_position: 2
 
 # Supported Chains and Tokens
 
-This document lists the currently supported chains and tokens on the OnlySwaps protocol and outlines the administrative process for adding new support.
+This document lists the currently supported chains and tokens on the ONLYSwaps protocol and outlines the administrative process for adding new support.
 
 ## Supported Chains
 
-The following EVM chains are currently supported by the OnlySwaps protocol and integrated into the `onlyswaps-ui` configuration (`chainConfigs`).
+The following EVM chains are currently supported by the ONLYSwaps protocol and integrated into the `ONLYSwaps-ui` configuration (`chainConfigs`).
 
 | Chain Name | Chain ID | Type | Router Address | RUSD (Test Token) Address |
 | :--- | :--- | :--- | :--- | :--- |
@@ -17,7 +17,7 @@ The following EVM chains are currently supported by the OnlySwaps protocol and i
 | Avalanche Fuji | 43113 | Testnet | `0x4cB630aAEA9e152db83A846f4509d83053F21078` | `0x1b0F6cF6f3185872a581BD2B5a738EB52CCd4d76` |
 | Base Sepolia | 84532 | Testnet | `0x4cB630aAEA9e152db83A846f4509d83053F21078` | `0x1b0F6cF6f3185872a581BD2B5a738EB52CCd4d76` |
 
-*Developers should always reference the `chainConfigs` object exported by `onlyswaps-ui` for the most up-to-date information. Do not hard-code these addresses.*
+*Developers should always reference the `chainConfigs` object exported by `ONLYSwaps-ui` for the most up-to-date information. Do not hard-code these addresses.*
 
 ## Supported Tokens
 

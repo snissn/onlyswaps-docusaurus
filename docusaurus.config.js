@@ -13,9 +13,9 @@ const noMdxEsm = require('./plugins/remark/noMdxEsm.js');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'OnlySwaps',
+  title: 'ONLYSwaps Docs',
   tagline: 'Developer documentation',
-  favicon: 'img/randamu_logo.svg',
+  favicon: 'img/dcipher-logo.svg',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -30,7 +30,7 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'fil-builders', // Usually your GitHub org/user name.
+  organizationName: 'randamu', // Usually your GitHub org/user name.
   projectName: 'randamu', // Usually your repo name.
 
   onBrokenLinks: 'warn',
@@ -88,10 +88,10 @@ const config = {
         respectPrefersColorScheme: true,
       },
       navbar: {
-        title: 'OnlySwaps',
+        title: 'ONLYSwaps Docs',
         logo: {
-          alt: 'OnlySwaps Logo',
-          src: 'img/randamu_logo.svg',
+          alt: 'ONLYSwaps Logo',
+          src: 'img/dcipher-logo.svg',
         },
         items: [
           { href: 'https://github.com/fil-builders', label: 'GitHub', position: 'right' },
@@ -114,7 +114,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} OnlySwaps. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} ONLYSwaps. Built with Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,
