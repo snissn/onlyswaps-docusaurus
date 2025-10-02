@@ -1,3 +1,11 @@
+---
+sidebar_position: 3
+title: "Backend Integration"
+description: "Programmatic cross-chain swaps using onlyswaps-js SDK, viem, and Node.js for backend services"
+keywords: ["backend", "programmatic", "Node.js", "viem", "onlyswaps-js", "TypeScript"]
+date: "2024-01-15"
+---
+
 # Backend & Programmatic Swaps: onlyswaps-js & viem
 
 This guide demonstrates how to initiate, monitor, and manage cross-chain swaps programmatically from a backend service or script using the `onlyswaps-js` SDK and `viem`.

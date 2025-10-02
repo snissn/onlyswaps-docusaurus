@@ -1,3 +1,7 @@
+---
+sidebar_position: 3
+---
+
 # Backend & Programmatic Swaps (Node/TypeScript)
 
 Goal: Kick off and monitor swaps from a backend or script using `viem` + `onlyswaps-js`.

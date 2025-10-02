@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # Getting Started for Developers
 
 You’ve got two clean integration paths:

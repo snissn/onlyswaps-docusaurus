@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Supported chains & tokens
 
 Use `chainConfigs` as the source of truth for supported networks and contract addresses in your app. Do not hard‑code addresses. :contentReference[oaicite:67]{index=67}

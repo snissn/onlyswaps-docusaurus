@@ -1,3 +1,11 @@
+---
+sidebar_position: 1
+title: "API and SDK Reference"
+description: "Comprehensive reference for OnlySwaps APIs including onlyswaps-ui, onlyswaps-js, and Solidity contracts"
+keywords: ["API", "reference", "SDK", "onlyswaps-ui", "onlyswaps-js", "Solidity", "contracts"]
+date: "2024-01-15"
+---
+
 # API and SDK Reference
 
 This document provides a comprehensive reference for the public APIs of the OnlySwaps protocol, covering the Solidity contracts, the JavaScript/TypeScript SDK, and the React UI library.

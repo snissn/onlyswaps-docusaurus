@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Frontend Quickstart (React)
 
 Goal: Ship a cross‑chain swap UI with Next.js, `onlyswaps-ui`, and `onlyswaps-js`.

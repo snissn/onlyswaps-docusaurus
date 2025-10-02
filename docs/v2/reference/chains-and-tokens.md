@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Supported Chains and Tokens
 
 This document lists the currently supported chains and tokens on the OnlySwaps protocol and outlines the administrative process for adding new support.

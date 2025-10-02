@@ -1,4 +1,12 @@
 ```markdown
+---
+sidebar_position: 4
+title: "Frequently Asked Questions"
+description: "Common questions and answers about OnlySwaps protocol, usage, and troubleshooting"
+keywords: ["FAQ", "questions", "troubleshooting", "help", "support"]
+date: "2024-01-15"
+---
+
 # Frequently Asked Questions (FAQ)
 
 ## General Questions

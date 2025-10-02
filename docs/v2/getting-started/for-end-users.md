@@ -1,3 +1,11 @@
+---
+sidebar_position: 1
+title: "For End Users"
+description: "Learn how to use OnlySwaps via the ONLYportal web interface to move tokens across blockchain networks"
+keywords: ["end users", "ONLYportal", "web interface", "token swap", "user guide"]
+date: "2024-01-15"
+---
+
 # Getting Started for End Users
 
 This guide explains how to use the OnlySwaps protocol via the ONLYportal web interface to move tokens across different blockchain networks.

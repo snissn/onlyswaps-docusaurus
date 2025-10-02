@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # Getting Started for End Users
 
 ## Access the app

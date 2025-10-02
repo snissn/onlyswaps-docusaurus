@@ -94,50 +94,6 @@ const config = {
           src: 'img/randamu_logo.svg',
         },
         items: [
-          {
-            label: 'Docs',
-            position: 'left',
-            items: [
-              { to: '/v1', label: 'Version 1' },
-              { to: '/v2', label: 'Version 2' },
-            ],
-          },
-          {
-            label: 'Guides',
-            position: 'left',
-            items: [
-              { to: '/v2/getting-started/for-end-users', label: 'For End Users (v2)' },
-              { to: '/v2/getting-started/for-developers/frontend-quickstart', label: 'Frontend Quickstart (v2)' },
-              { to: '/v2/getting-started/for-developers/backend-integration', label: 'Programmatic Swaps (v2)' },
-              { to: '/v1/getting-started/for-end-users', label: 'For End Users (v1)' },
-              { to: '/v1/getting-started/for-developers/frontend-quickstart', label: 'Frontend Quickstart (v1)' },
-              { to: '/v1/getting-started/for-developers/backend-integration', label: 'Programmatic Swaps (v1)' },
-            ],
-          },
-          {
-            label: 'Concepts',
-            position: 'left',
-            items: [
-              { to: '/v2/introduction/overview', label: 'Overview (v2)' },
-              { to: '/v2/introduction/architecture', label: 'Architecture (v2)' },
-              { to: '/v1/introduction/overview', label: 'Overview (v1)' },
-              { to: '/v1/introduction/architecture', label: 'Architecture (v1)' },
-            ],
-          },
-          {
-            label: 'Reference',
-            position: 'left',
-            items: [
-              { to: '/v2/reference/api', label: 'API / SDK (v2)' },
-              { to: '/v2/reference/fees', label: 'Fees (v2)' },
-              { to: '/v2/reference/chains-and-tokens', label: 'Chains & Tokens (v2)' },
-              { to: '/v2/reference/faq', label: 'FAQ (v2)' },
-              { to: '/v1/reference/api', label: 'API / SDK (v1)' },
-              { to: '/v1/reference/fees', label: 'Fees (v1)' },
-              { to: '/v1/reference/chains-and-tokens', label: 'Chains & Tokens (v1)' },
-              { to: '/v1/reference/faq', label: 'FAQ (v1)' },
-            ],
-          },
           { href: 'https://github.com/fil-builders', label: 'GitHub', position: 'right' },
         ],
       },

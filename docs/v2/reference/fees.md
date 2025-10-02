@@ -1,4 +1,8 @@
 ```markdown
+---
+sidebar_position: 3
+---
+
 # Fee Structure
 
 The OnlySwaps protocol incorporates a transparent fee structure designed to incentivize participation from both liquidity providers (Solvers) and the decentralized verification network (dcipher committee). Fees are paid by the user initiating the swap and are denominated in the token being transferred.

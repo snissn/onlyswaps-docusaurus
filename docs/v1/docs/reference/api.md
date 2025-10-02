@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # API / SDK Reference
 
 This page lists the public surface across UI hooks, JS clients, and Solidity interfaces. Use it alongside the examples in Getting Started.

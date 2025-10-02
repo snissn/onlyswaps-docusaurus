@@ -1,3 +1,11 @@
+---
+sidebar_position: 1
+title: "OnlySwaps Overview"
+description: "Learn about OnlySwaps cross-chain token transfer protocol, its architecture, and key features for developers and end users"
+keywords: ["cross-chain", "DeFi", "token transfer", "EVM", "blockchain", "OnlySwaps"]
+date: "2024-01-15"
+---
+
 # OnlySwaps Overview
 
 ## What is OnlySwaps?

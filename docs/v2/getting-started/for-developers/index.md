@@ -1,3 +1,11 @@
+---
+sidebar_position: 1
+title: "Getting Started for Developers"
+description: "Learn how to integrate OnlySwaps into your application with onlyswaps-ui and onlyswaps-js SDKs"
+keywords: ["developer", "integration", "SDK", "onlyswaps-ui", "onlyswaps-js", "React"]
+date: "2024-01-15"
+---
+
 # Getting Started for Developers
 
 Integrating OnlySwaps into your application allows you to offer seamless cross-chain token transfers to your users. The protocol provides a robust suite of tools tailored for different integration paths.

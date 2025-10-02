@@ -1,0 +1,10 @@
+{
+  "label": "For Developers",
+  "position": 1,
+  "collapsible": true,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "slug": "/getting-started/for-developers"
+  }
+}

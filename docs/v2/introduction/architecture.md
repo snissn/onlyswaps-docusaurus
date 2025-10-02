@@ -1,3 +1,11 @@
+---
+sidebar_position: 2
+title: "Protocol Architecture"
+description: "Deep dive into OnlySwaps protocol architecture, components, and cross-chain flow with sequence diagrams"
+keywords: ["architecture", "protocol", "cross-chain", "BLS signatures", "dcipher", "solvers"]
+date: "2024-01-15"
+---
+
 # Protocol Architecture
 
 The OnlySwaps protocol utilizes an intent-based architecture secured by threshold cryptography to facilitate cross-chain token transfers. This involves coordination between Users, Solvers, the decentralized dcipher committee, and the Router contracts deployed on supported chains.

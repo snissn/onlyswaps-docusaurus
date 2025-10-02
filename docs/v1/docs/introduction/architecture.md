@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Architecture
 
 This section walks through the on‑chain/off‑chain flow and the core components: Router, BLS signature scheme, dcipher committee, solvers, and fees.

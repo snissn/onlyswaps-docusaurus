@@ -1,3 +1,11 @@
+---
+sidebar_position: 1
+title: "Welcome to OnlySwaps"
+description: "The definitive cross-chain token transfer protocol. Learn about OnlySwaps architecture, integration guides, and developer resources"
+keywords: ["OnlySwaps", "cross-chain", "token transfer", "DeFi", "EVM", "dcipher", "protocol"]
+date: "2024-01-15"
+---
+
 # Welcome to OnlySwaps
 
 **The definitive cross-chain token transfer protocol.**
